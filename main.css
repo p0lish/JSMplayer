@@ -1,0 +1,99 @@
+.container {
+  background: #fff;
+  margin: 0 auto;
+  width: 400px;
+  height:130px;
+  padding: 0px;
+  text-align: left;
+ 
+}
+
+.infobox {
+  margin-top: 1px;
+  margin-left:1px;
+  width: 396px;
+  height:63px;
+  border: 1px solid black;
+    
+
+}
+.seekbarbox{
+  margin-top: 1px;
+  margin-left:1px;
+  width: 396px;;
+  height:29px;
+  border: 1px solid black;
+
+}
+
+.buttonbox{
+  margin-top: 1px;
+  margin-left:1px;
+  width: 396px;
+  height:29px;
+  border: 1px solid black;
+  }
+
+.playlistbox{
+  margin-top: 1px;
+  margin-left:1px;
+  width: 396px;
+  min-height:29px;
+  border: 1px solid black;
+  }
+
+
+.buttonbox div{
+  text-align:center;
+  margin: 3px;
+  padding:3px;
+  cursor:pointer;
+  }
+
+  
+  
+.prevbutton{
+  width:40px;
+  height:15px;
+  float:left;
+  border: 1px solid black;
+  }
+.stopbutton{
+  width:30px;
+  height:15px;
+  float:left;
+  border: 1px solid black;
+  }
+.playbutton{
+  width:30px;
+  height:15px;
+  float:left;
+  border: 1px solid black;
+  }
+.nextbutton{
+  width:40px;
+  height:15px;
+  
+  float:left;
+  border: 1px solid black;
+  }
+  
+.openbutton{
+  width:40px;
+  height:15px;
+  
+  float:left;
+  border: 1px solid black;
+  }
+  
+  
+  
+audio {
+  display:none;
+}
+
+
+#fileopener{
+  opacity: 1;
+  width: 10px;
+}

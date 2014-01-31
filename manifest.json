@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "permissions":[
+                 "file:///*"
+                 ],
+  "name": "chrome music player",
+  "description": "My first Chrome App.",
+  "version": "0.1",
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "icons": { "16": "player.png", "128": "player.png" }
+}
