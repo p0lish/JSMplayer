@@ -1,8 +1,6 @@
 {
   "manifest_version": 2,
-  "permissions":[
-                 "file:///*"
-                 ],
+  "permissions":["<all_urls>"],
   "name": "chrome music player",
   "description": "My first Chrome App.",
   "version": "0.1",
