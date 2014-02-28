@@ -17,19 +17,15 @@ function init() {
     prevbtn.addEventListener('click',function(){
         prevbtn_click();
         });
-    
     stopbtn.addEventListener('click',function(){
         stopbtn_click();
         });
-    
     playbtn.addEventListener('click',function(){
         playbtn_click();
         });
-    
     nextbtn.addEventListener('click',function(){
        nextbtn_click()
         });
-
     playlistbtn.addEventListener('click',function(){
         playlistbtn_click();
     });
@@ -40,19 +36,26 @@ function init() {
 
 
 function prevbtn_click(){
-    currentPointer -= 1;
-    create_source_item();
-    if (playorpause !=0) {
-        playbtn.textContent = '>';
-        playorpause =1;
-        player.pause();
+    if (playlist.length!==0){
+        currentPointer = (currentPointer === 0) ? 0:currentPointer-1;
+        create_source_item();
+        update_displays();
+        if (playorpause !=0) {
+            playbtn.textContent = '>';
+            playorpause =1;
+            player.pause();
+        }
+        else{
+            playbtn.textContent = '||';
+            playorpause =0;
+            player.play();
+        }
     }
-    else{
-        playbtn.textContent = '||';
-        playorpause =0;
-        player.play();
 
-    }
+    /// DEBUG SECTION
+    console.log(currentPointer);
+    console.log(playlist[currentPointer]);
+
 }
 function stopbtn_click(){
     player.pause();
@@ -61,35 +64,46 @@ function stopbtn_click(){
     playorpause =1;
 }
 function playbtn_click(){
-    if (playorpause ==0) {
-        playbtn.textContent = '>';
-        playorpause =1;
-        player.pause();
-    }
-    else{
-        playbtn.textContent = '||';
-        playorpause =0;
-        player.play();
+    if (playlist.length!==0){
+        if (playorpause ==0) {
+            playbtn.textContent = '>';
+            playorpause =1;
+            player.pause();
+        }
+        else{
+            playbtn.textContent = '||';
+            playorpause =0;
+            player.play();
         
+        }
+        update_displays();
     }
+
 }
 function nextbtn_click(){
-    currentPointer += 1;
-    create_source_item();
-    if (playorpause !=0) {
-        playbtn.textContent = '>';
-        playorpause =1;
-        player.pause();
+    if (playlist.length!==0){
+        currentPointer = (currentPointer === playlist.length) ? playlist.length:currentPointer+1;
+        create_source_item();
+        update_displays();
+        if (playorpause !=0) {
+            playbtn.textContent = '>';
+            playorpause =1;
+            player.pause();
+        }
+        else{
+            playbtn.textContent = '||';
+            playorpause =0;
+            player.play();
+        }
     }
-    else{
-        playbtn.textContent = '||';
-        playorpause =0;
-        player.play();
 
-    }
+    /// DEBUG SECTION
+    console.log(currentPointer);
+    console.log(playlist[currentPointer]);
+
+
 }
 function playlistbtn_click(){
-    display.textContent ='playlist button clicked';
     if (closedheight === currentApp.getBounds()['height']){
         currentApp.resizeTo(currentApp.getMaxWidth(),currentApp.getMaxHeight());
         $('.playlistbox').css('height','600');
@@ -107,6 +121,11 @@ function create_source_item(){
     type = playlist[currentPointer].type;
     $('#main_player').empty();
     $('#main_player').append('<source src="'+audio_url+'" type="'+type+'" />');
+}
+function update_displays(){
+    $('.playlistitem').removeClass('current');
+    $('.playlistitem#'+currentPointer).addClass('current');
+    display.textContent = $('.playlistitem#'+currentPointer).text();
 }
 /// BOOT SETUP
 

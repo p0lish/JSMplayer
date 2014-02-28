@@ -96,12 +96,23 @@
 
 .playlistitem{
     width: 100%;
+    -webkit-transition: background-color: 3s;
+    -moz-transition: background-color: 3s;
+    -ms-transition: background-color: 3s;
+    -o-transition: background-color: 3s;
+    transition: background-color: 3s;
+}
+
+.current{
+    background: gainsboro;
 }
   
   
 audio {
   display:none;
 }
+
+
 
 
 #fileopener{
