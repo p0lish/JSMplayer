@@ -65,6 +65,8 @@ function stopbtn_click(){
 }
 function playbtn_click(){
     if (playlist.length!==0){
+        if ($('audio source').length === 0)
+            create_source_item();
         if (playorpause ==0) {
             playbtn.textContent = '>';
             playorpause =1;
