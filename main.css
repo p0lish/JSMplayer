@@ -106,7 +106,15 @@
 .current{
     background: gainsboro;
 }
-  
+
+.time{
+    border: 1px solid black;
+}
+
+.info{
+    border: 1px solid black;
+}
+
   
 audio {
   display:none;

@@ -1,8 +1,22 @@
 window.addEventListener('DOMContentLoaded', init);
+/// Prototype declarations
+String.prototype.reformatPlaytime = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    var time    = hours+':'+minutes+':'+seconds;
+    return time;
+}
 var currentApp = chrome.app.window.current();
 var closedheight = currentApp.getBounds()['height'];
 var playlist = [];
 var currentPointer = 0;
+var continousPlaying = true;
 
 function init() {
     playorpause = 1;
@@ -29,9 +43,18 @@ function init() {
     playlistbtn.addEventListener('click',function(){
         playlistbtn_click();
     });
-    
-    
-    display.textContent ='welcome to the chrome player';
+    $('#main_player').bind('ended',function(){
+        goto_next();
+    });
+
+    $('#main_player').bind('timeupdate',function(){
+        $('.time').html(reformat_playtime(this.currentTime)+' | '+reformat_playtime(this.duration));
+    });
+
+
+
+
+    $('.info').text('welcome to the chrome player');
 }
 
 
@@ -127,14 +150,28 @@ function create_source_item(){
 function update_displays(){
     $('.playlistitem').removeClass('current');
     $('.playlistitem#'+currentPointer).addClass('current');
-    display.textContent = $('.playlistitem#'+currentPointer).text();
+    $('.info').text($('.playlistitem#'+currentPointer).text());
 }
+function goto_next(){
+    if (continousPlaying){
+        if (playlist.length!==0){
+            currentPointer = (currentPointer === playlist.length) ? playlist.length:currentPointer+1;
+            create_source_item();
+            update_displays();
+            player.play();
+            }
+
+        }
+}
+function reformat_playtime(input){
+    input = Math.round(input);
+    return input.toString().reformatPlaytime();
+}
+
+
 /// BOOT SETUP
-
 $('.playlistbox').css('height','100px');
-
-$('#mu_sic').on('change',function ()
-{
+$('#mu_sic').on('change',function (){
     $.each($('#mu_sic')[0].files,function(){
         playlist.push(this);
     });
