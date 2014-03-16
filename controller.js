@@ -27,6 +27,8 @@ function init() {
     playbtn = document.querySelector('.playbutton');
     nextbtn = document.querySelector('.nextbutton');
     playlistbtn = document.querySelector('.playlistbutton');
+    seeker = document.querySelector('.seeker');
+    volume = document.querySelector('.volume');
 
     prevbtn.addEventListener('click',function(){
         prevbtn_click();
@@ -43,6 +45,13 @@ function init() {
     playlistbtn.addEventListener('click',function(){
         playlistbtn_click();
     });
+
+
+
+
+
+
+
     $('#main_player').bind('ended',function(){
         goto_next();
     });
@@ -71,6 +80,7 @@ function prevbtn_click(){
         else{
             playbtn.textContent = '||';
             playorpause =0;
+            setSeeker();
             player.play();
         }
     }
@@ -98,6 +108,7 @@ function playbtn_click(){
         else{
             playbtn.textContent = '||';
             playorpause =0;
+            setSeeker();
             player.play();
         
         }
@@ -118,6 +129,7 @@ function nextbtn_click(){
         else{
             playbtn.textContent = '||';
             playorpause =0;
+            setSeeker();
             player.play();
         }
     }
@@ -158,19 +170,48 @@ function goto_next(){
             currentPointer = (currentPointer === playlist.length) ? playlist.length:currentPointer+1;
             create_source_item();
             update_displays();
+            setSeeker();
             player.play();
-            }
 
         }
+
+    }
 }
 function reformat_playtime(input){
     input = Math.round(input);
     return input.toString().reformatPlaytime();
 }
 
+function setVolume(){
+    player.volume = $('.volume').slider('value')/100;
+}
+
+function setSeeker(){
+    $('.seeker').slider({
+        max: player.duration,
+        value: 0,
+        slide: setPos,
+        change: setPos
+    });
+}
+
+function setPos(){
+    player.currentTime = $('.seeker').slider('value');   
+}
+
+
+
+
 
 /// BOOT SETUP
 $('.playlistbox').css('height','100px');
+$('.volume').slider({
+    max:100,
+    value:50,
+    slide: setVolume,
+    change: setVolume
+});
+$('.seeker').slider();
 $('#mu_sic').on('change',function (){
     $.each($('#mu_sic')[0].files,function(){
         playlist.push(this);
