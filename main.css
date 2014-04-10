@@ -35,11 +35,14 @@
   }
 
 .playlistbox{
+  overflow: hidden;
+  overflow-y: auto;
   margin-top: 1px;
   margin-left:1px;
   width: 396px;
   min-height:29px;
   border: 1px solid black;
+  bottom: 10px;
   }
 
 
@@ -125,9 +128,9 @@ audio {
 
 
 
-#fileopener{
+#mu_sic{
   opacity: 1;
-  width: 10px;
+  width: 0px;
 }
 
 

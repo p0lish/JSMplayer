@@ -1,47 +1,4 @@
 
-function init() {
-    playorpause = 1;
-    player =  document.querySelector('#main_player');
-    display = document.querySelector('.infobox');
-    prevbtn = document.querySelector('.prevbutton');
-    stopbtn = document.querySelector('.stopbutton');
-    playbtn = document.querySelector('.playbutton');
-    nextbtn = document.querySelector('.nextbutton');
-    playlistbtn = document.querySelector('.playlistbutton');
-    seeker = document.querySelector('.seeker');
-    volume = document.querySelector('.volume');
-
-    prevbtn.addEventListener('click',function(){
-        prevbtn_click();
-        });
-    stopbtn.addEventListener('click',function(){
-        stopbtn_click();
-        });
-    playbtn.addEventListener('click',function(){
-        playbtn_click();
-        });
-    nextbtn.addEventListener('click',function(){
-       nextbtn_click()
-        });
-    playlistbtn.addEventListener('click',function(){
-        playlistbtn_click();
-    });
-
-    /// Bind a function, if the current song is ended.
-    $('#main_player').bind('ended',function(){
-        goto_next();
-    });
-
-
-    /// Bind functions if the playing is active.
-    $('#main_player').bind('timeupdate',function(){
-        $('.time').html(reformat_playtime(this.duration)+' | '+reformat_playtime(this.currentTime));
-        $('.seeker').slider('value',player.currentTime);
-        setSeeker();
-    });
-
-    $('.info').text('welcome to the chrome player');
-}
 
 function prevbtn_click(){
     if (playlist.length!==0){
@@ -111,15 +68,6 @@ function nextbtn_click(){
     /// DEBUG SECTION
     console.log(currentPointer);
     console.log(playlist[currentPointer]);
-}
-
-function playlistbtn_click(){
-    if (closedheight === currentApp.getBounds()['height']){
-        currentApp.resizeTo(currentApp.getMaxWidth(),currentApp.getMaxHeight());
-        $('.playlistbox').css('height','600');
-    }else{
-        currentApp.resizeTo(currentApp.getMinWidth(),currentApp.getMinHeight());
-    }
 }
 
 function reload_playlist(){
