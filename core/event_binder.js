@@ -32,11 +32,30 @@ function init(){
         nextbtn_click()
     });
 
-    playlistbtn = document.querySelector('.playlistbutton');
+    playlistbtn = document.querySelector('.openfilebutton');
     playlistbtn.addEventListener('click',function(){
-       /// playlistbtn_click();
         $('#mu_sic').click();
     });
+
+    togglebtn = document.querySelector('.toggledrop');
+    togglebtn.addEventListener('click', function(){
+        togglebtn_click();
+    });
+
+    urlbtn = document.querySelector('.addurl');
+    togglebtn.addEventListener('click', function(){
+        urlbtn_click();
+    });
+
+
+    clrbtn = document.querySelector('.removeall');
+    clrbtn.addEventListener('click', function(){
+        playlist = [];
+        reload_playlist();
+    });
+
+
+
 
     /// Bind a function, if the current song is ended.
     $('#main_player').bind('ended',function(){

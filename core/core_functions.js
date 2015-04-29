@@ -13,6 +13,7 @@ function prevbtn_click(){
         else{
             playbtn.textContent = '||';
             playorpause =0;
+            player.load();
             player.play();
         }
     }
@@ -56,11 +57,13 @@ function nextbtn_click(){
         if (playorpause !=0) {
             playbtn.textContent = '>';
             playorpause =1;
+            player.load();
             player.pause();
         }
         else{
             playbtn.textContent = '||';
             playorpause =0;
+            player.load();
             player.play();
         }
     }
@@ -70,9 +73,25 @@ function nextbtn_click(){
     console.log(playlist[currentPointer]);
 }
 
+function togglebtn_click(){
+    if (togglebtn.textContent == "down"){
+    currentApp.resizeTo(1,145+((playlist.length)*20));
+        togglebtn.textContent = "up"
+    }
+    else{
+        currentApp.resizeTo(1,1);
+        togglebtn.textContent = "down"
+    }
+}
+
 function reload_playlist(){
     $.each(playlist,function(index){
-       $('.playlistbox').append('<div id="'+index+'" class="playlistitem">'+this.name+'</div>');
+        id3(playlist[index],function(err,tags){
+            playlist[index].id3data = tags;
+            playlistitem = tags.artist+' - '+tags.title;
+            $('.playlistbox').append('<div id="'+index+'" class="playlistitem">'+ playlistitem +'</div>');
+        });
+
     });
     $('.playlistbox div').unbind('dblclick');
     $('.playlistbox div').unbind('click');
@@ -82,6 +101,7 @@ function reload_playlist(){
         currentPointer = $(this).attr('id');
         create_source_item();
         update_displays();
+        player.load();
         player.play();
         playbtn.textContent = '||';
     });
@@ -112,6 +132,7 @@ function goto_next(){
             currentPointer = (currentPointer === playlist.length) ? playlist.length:currentPointer+1;
             create_source_item();
             update_displays();
+            player.load();
             player.play();
 
         }
@@ -135,4 +156,17 @@ function setSeeker(){
 
 function setPos(){
     player.currentTime = $('.seeker').slider('value');   
+}
+
+function urlbtn_click(){
+    var person = prompt("Please enter the stream URL", "http://");
+
+    if (person != null) {
+        $('.playlistbox').append('<div id="'+index+'" class="playlistitem">'+ playlistitem +'</div>');
+
+    }
+
+
+
+
 }

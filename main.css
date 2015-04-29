@@ -53,56 +53,32 @@
   cursor:pointer;
   }
 
-  
-  
-.prevbutton{
-  width:40px;
-  height:15px;
-  float:left;
-  border: 1px solid black;
-  }
+
+.button{
+    width:40px;
+    height:15px;
+    float:left;
+    border: 1px solid black;
+    -webkit-transition: background: 3s;
+    transition: background: 3s;
+}
+
+.button:hover{
+    background: #d3d3d3;
+}
+
+
+
 .stopbutton{
   width:30px;
-  height:15px;
-  float:left;
-  border: 1px solid black;
   }
 .playbutton{
   width:30px;
-  height:15px;
-  float:left;
-  border: 1px solid black;
   }
-.nextbutton{
-  width:40px;
-  height:15px;
-  
-  float:left;
-  border: 1px solid black;
-  }
-  
-.openbutton{
-  width:40px;
-  height:15px;
-  
-  float:left;
-  border: 1px solid black;
-  }
-
-.playlistbutton{
-    width:40px;
-    height:15px;
-
-    float:left;
-    border: 1px solid black;
-}
 
 .playlistitem{
     width: 100%;
     -webkit-transition: background-color: 3s;
-    -moz-transition: background-color: 3s;
-    -ms-transition: background-color: 3s;
-    -o-transition: background-color: 3s;
     transition: background-color: 3s;
 }
 

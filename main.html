@@ -8,23 +8,33 @@
             </audio>
             <div class="infobox">
                 <div class="time"></div>
-                <div class="info"></div>
+                <div class="info">
+                    <label name="artist_">Artist</label>
+                    <label name="title_">Title</label>
+                    <label name="album_">Album</label>
+                    <label name="genere_">Genere</label>
+                </div>
             </div>
             <div class="seekbarbox">
                 <div id="seeker" class='seeker'></div>
                 <div class='volume'></div>
             </div>
             <div class="buttonbox">
-                <div class="prevbutton"><<</div>
-                <div class="stopbutton">[-]</div>
-                <div class="playbutton">></div>
-                <div class="nextbutton">>></div>
-                <div class="playlistbutton">=</div>
+                <div class="button prevbutton"><<</div>
+                <div class="button stopbutton">[-]</div>
+                <div class="button playbutton">></div>
+                <div class="button nextbutton">>></div>
+                <div class="button openfilebutton">=</div>
+                <div class="button toggledrop">down</div>
             </div>
             <div class="playlistbox">
                 
             </div>
-            <input type="file" id="mu_sic" multiple>
+            <div class="buttonbox">
+                <input type="file" id="mu_sic" multiple>
+                <div class="button addurl">+url</div>
+                <div class="button removeall">clear</div>
+            </div>
         </div>
         <script src="core/jquery/jquery.js"></script>
         <script src="core/jquery/jqueryui.js"></script>
@@ -32,6 +42,7 @@
         <script src="core/core_functions.js"></script>
         <script src="core/event_binder.js"></script>
         <script src="core/controller.js"></script>
+        <script src="core/id3.min.js"></script>
 
 
     </body>
