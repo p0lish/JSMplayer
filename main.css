@@ -63,6 +63,18 @@
     transition: background: 3s;
 }
 
+
+.button.addfile {
+    overflow: hidden;
+}
+.button.addfile input{
+    display: block !important;
+    width: 40px !important;
+    height: 15px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
+
 .button:hover{
     background: #d3d3d3;
 }

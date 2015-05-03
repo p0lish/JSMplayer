@@ -85,6 +85,7 @@ function togglebtn_click(){
 }
 
 function reload_playlist(){
+    $('.playlistbox').empty();
     $.each(playlist,function(index){
         id3(playlist[index],function(err,tags){
             playlist[index].id3data = tags;
@@ -159,14 +160,5 @@ function setPos(){
 }
 
 function urlbtn_click(){
-    var person = prompt("Please enter the stream URL", "http://");
-
-    if (person != null) {
-        $('.playlistbox').append('<div id="'+index+'" class="playlistitem">'+ playlistitem +'</div>');
-
-    }
-
-
-
-
+   console.log("url-adding...")
 }

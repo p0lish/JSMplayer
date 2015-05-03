@@ -9,7 +9,7 @@ var continousPlaying = true;
 var playorpause = 1;
 
 /// BOOT SETUP
-$('.playlistbox').css('height','100px');
+$('.playlistbox').css('height','300px');
 $('.volume').slider({
     max:100,
     value:50,
@@ -21,6 +21,5 @@ $('#mu_sic').on('change',function (){
     $.each($('#mu_sic')[0].files,function(){
         playlist.push(this);
     });
-
     reload_playlist();
 });

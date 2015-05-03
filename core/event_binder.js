@@ -6,6 +6,8 @@ function init(){
 
     playorpause = 1;
     player =  document.querySelector('#main_player');
+    setVolume();
+
     display = document.querySelector('.infobox');
 
     seeker = document.querySelector('.seeker');
@@ -43,7 +45,7 @@ function init(){
     });
 
     urlbtn = document.querySelector('.addurl');
-    togglebtn.addEventListener('click', function(){
+    urlbtn.addEventListener('click', function(){
         urlbtn_click();
     });
 
